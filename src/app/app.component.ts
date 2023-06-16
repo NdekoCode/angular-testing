@@ -27,5 +27,18 @@ export class AppComponent {
   get todos() {
     return this._todos;
   }
-  addTodo(form: NgForm) {}
+  addTodo(form: NgForm) {
+    if (form.valid) {
+      this._todos.push({
+        id: this._todos.length + 1,
+        content: this.newContent,
+        done: false,
+        createdAt: new Date(),
+      });
+      this.newContent = '';
+    }
+  }
+  removeTodo(id: number | string) {
+    this._todos = this._todos.filter((t) => t.id !== id);
+  }
 }

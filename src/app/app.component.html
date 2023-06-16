@@ -44,20 +44,23 @@
               <input
                 type="checkbox"
                 class="h-6 w-6"
+                [id]="todo.id"
                 value="true"
                 [(ngModel)]="todo.done"
                 [checked]="todo.done"
               />
             </div>
             <div class="p-2">
-              <p
+              <label
+                [for]="todo.id"
                 class="text-lg text-gray-400"
                 [ngClass]="{ 'line-through': todo.done }"
               >
                 {{ todo.content }}
-              </p>
+              </label>
             </div>
             <button
+              (click)="removeTodo(todo.id)"
               class="flex text-red-500 border-2 border-red-500 p-2 rounded-lg"
             >
               <svg
